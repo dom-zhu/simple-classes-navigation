@@ -1,145 +1,46 @@
-# Acceptance Criteria
+# Simple Classes Navigation
 
-**_As a teacher, I want to navigate to one of my classes using my timetabled list of classes, So that I can quickly view the status of activities in my class_**
+The purpose of this project is to practice programming using 2 different paradigms: **imperative** and **declarative** programming.
 
----
+**Declarative programming** is a programming paradigm that expresses the logic of a computation without describing its control flow.
 
-## 4.3.1 Displaying schools
+**Imperative programming** is a programming paradigm that uses statements that change a program’s state.
 
----
+## Context
 
-### 4.3.1.1 Teacher has one school
+The problem you're going to solve is coming from a real use case a PZ team had to solve for one of his client.
 
-Given I am Teacher
+A web application receives data from an API; a list of schools with their associated classes.\
+You can check out the file **mock.ts** as an example.
 
-And I have more than one class
+The data needs to be sanitized and formatted properly to display the list of schools and classes in the left side panel of a web application.\
+You can check out the screenshots of the side panel in the images folder as an example.
 
-And I teach in only one school
+There are some business rules to apply when displaying the side panel.\
+You can check out the acceptance criteria in the **ACCEPTANCE_CRITERIA** markup file.
 
-When I open my landing page
+## Objective of the exercise
 
-Then I will see a list of all the classes
+Your goal is to implement a solution that transforms the list of schools coming from the API to a list of navigation groups ready to be passed as a parameter of a React component (which isn't part of this repository).
 
-And It will have the heading ‘My classes’
+You must implement 2 solutions of this problem, one using declarative programming paradigm, one using imperative programming paradigm.
 
-And Each each class will be listed as per 4.3.2
+In order to verify your implementations, you can run the program from app.ts that uses the mock data and output the result (see instructions below).
 
----
+You also need to have all the unit tests passing to verify both of your implementations are compliant with the acceptance criteria.
 
-### 4.3.1.2 Teacher has multiple schools
+Make sure you check out the **types.ts** definition and the **helpers** to help you implement the logic.
 
-Given I am Teacher
+## Run and test
 
-And I have multiple classes across more than one school When I open my landing page
+Run the program and check the result of the mock transformation:
 
-Then I will see a list of all the schools that I have classes at
+```
+npm start
+```
 
-And It will have the heading ‘My classes’
+Run the tests and verify both implementations are correct
 
-And Each school listed will display the schools name (without the suburb) and a ChevronDown (E70D) icon
-
----
-
-### 4.3.1.3 Clicking the school
-
-Given I am Teacher
-
-And I have multiple classes across more than one school
-
-And I have opened my landing page
-
-When I click on a minimised school
-
-Then I will see a list of all of my classes appear under the school And The school will now display a ChevronUp (E70ED) icon And The classes
-will be displayed according to 4.3.2
-
-Given I am Teacher
-
-And I have multiple classes across more than one school And I have opened my landing page
-
-When I click on a expanded school
-
-Then The list of classes is hidden
-
----
-
-## 4.3.2 Displaying classes
-
----
-
-### 4.3.2.1 Displaying less than 7 classes
-
-Given I am Teacher
-
-And I have less than 7 classes in one school (2-6 classes)
-
-When I open my landing page (and expand my school, if more than one school) Then I will see a list of all of my classes in that school
-
-And The class will be displayed as its name
-
-And It will link to its class page
-
----
-
-### 4.3.2.2 Displaying year group links when more than 6 classes in a school
-
-Given I am Teacher
-
-And I have more than 6 classes in one school
-
-When I open my landing page (and expand my school, if more than one school)
-
-Then I will see a list of all of year groups I have classes in
-
-And Each year group will labelled with its name (Prep or Year x) and a ChevronDown (E70D) icon
-
----
-
-### 4.3.2.3 Clicking the year group
-
-Given I am Teacher
-
-And I have more than 6 classes in one school
-
-And I have opened my landing page
-
-When I click on a minimised year group
-
-Then I will see a list of all of my classes appear under the year group And The year group will now display a ChevronUp (E70ED) icon And Each
-class will be displayed as its name
-
-And It will link to its class page
-
-Given I am Teacher
-
-And I have more than 6 classes in one school And I have opened my landing page
-
-When I click on a expanded year group
-
-Then The list of classes is hidden
-
----
-
-### 4.3.2.4 Clicking on a class
-
-Given I am Teacher
-
-And I have opened my landing page And I have classes displayed
-
-When I click on a class
-
-Then The class' page will be displayed
-
----
-
-## 4.3.3 Teacher has one or no classes
-
----
-
-Given I am Teacher
-
-And I have no classes
-
-When I open my landing page
-
-Then I will not see the class list at all
+```
+npm test
+```
