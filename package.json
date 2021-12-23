@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "scripts": {
         "start": "ts-node src/app.ts",
-        "test": "jest"
+        "test": "jest --verbose"
     },
     "dependencies": {},
     "devDependencies": {
